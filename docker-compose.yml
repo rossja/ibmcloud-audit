@@ -1,17 +1,11 @@
 version: "3"
 services:
-  stratus:
+  ibmcloud-audit:
     image: "ibmcloud-audit:latest"
     build:
       context: .
       dockerfile: Dockerfile
     volumes:
       - type: bind
-        source: ./data
-        target: /root/data
-      - type: bind
-        source: ./bin
-        target: /root/bin
-      - type: bind
-        source: ./.bluemix
-        target: /root/.bluemix
+        source: ./src
+        target: /root/ibmcloud-audit
