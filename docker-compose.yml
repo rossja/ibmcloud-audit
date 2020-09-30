@@ -4,14 +4,14 @@ services:
     image: "ibmcloud-audit:latest"
     build:
       context: .
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     volumes:
       - type: bind
-       source: data
-       target: /root/data
+        source: ./data
+        target: /root/data
       - type: bind
-       source: bin
-       target: /root/bin
+        source: ./bin
+        target: /root/bin
       - type: bind
-       source: .bluemix
-       target: /root/.bluemix
+        source: ./.bluemix
+        target: /root/.bluemix
