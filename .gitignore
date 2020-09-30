@@ -1,0 +1,4 @@
+.DS_Store
+.env
+.bluemix/*
+!.bluemix/README.md
