@@ -11,5 +11,11 @@ mkdir -p ${WORKDIR}
 #          RRRUUUNNNNN!
 # -------------------------------
 
-# gather the account data for the logged in user
+# gather the resource data
+./bin/resource.sh
+
+# gather the account data
 ./bin/account.sh
+
+# gather the cloud object storage data
+./bin/cos.sh
