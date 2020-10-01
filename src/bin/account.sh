@@ -6,7 +6,7 @@
 # for folks calling these scripts directly and from the main script
 [[ -f .env ]] && source .env
 [[ -f ../.env ]] && source ../.env
-IFS=$'\n' # this is critical if a resource or org name has spaces
+IFS=$'\n'
 # ======================================================================
 
 # Main()
@@ -24,9 +24,9 @@ echo -e "\nProcessing data to prepare for additional checks...\n"
 orgs=$(jq '.[] | [.OrgName, .OrgGuid,.Region] | @csv' audit-output/account-orgs.json | awk -F, '{print $1","$2","$3}'|sed 's/\"//g'|sed 's/\\//g')
 
 for org in ${orgs}; do
-  name=$(echo $org|awk -F, '{print $1'})
-  id=$(echo $org|awk -F, '{print $2'})
-  region=$(echo $org|awk -F, '{print $3'})
+  name=$(echo $org|awk -F, '{print $1}')
+  id=$(echo $org|awk -F, '{print $2}')
+  region=$(echo $org|awk -F, '{print $3}')
 
   echo -e "\nChecking spaces for ${name} in region: ${region}...\n"
   ibmcloud account spaces -o ${name} -r ${region} --output json > ${OUTDIR}/account-spaces-${name}-${region}.json
